@@ -8,6 +8,7 @@ const home = (req, res) => {
   Visit.find()
     .sort({ createdAt: -1 })
     .then((result) => {
+      console.log(result)
       res.render("index", { visits: result });
     })
     .catch((err) => {

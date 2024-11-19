@@ -1,0 +1,11 @@
+.visit_div {
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 20px;
+    width: 50vw;
+    margin: 20px;
+}
+
+a {
+    text-decoration: none;
+}

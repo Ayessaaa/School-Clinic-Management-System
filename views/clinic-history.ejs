@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinic History</title>
+    <link rel="stylesheet" href="/css/clinic-history.css">
+</head>
+<body>
+    <h1>CLINIC VISIT HISTORY </h1>
+    <% if (visits.length > 0){ %>
+        <% visits.forEach(visit => { %>
+            <div class="visit_div">
+                
+                    <h3><%= visit.name %></h3>
+                    <h3><%= visit.reason %></h3>
+                    <h4><%= visit.details %></h4>
+                    <% if(visit.time_start.split(':')[0] > 12){ %>
+                        <% var hour = visit.time_start.split(':')[0] - 12 %>
+                        <% var am_pm = "PM" %>
+                    <% } else { %>
+                        <% var hour = visit.time_start.split(':')[0] %>
+                        <% var am_pm = "AM" %>
+                    <% } %>
+                    <h4><%= hour +":"+ visit.time_start.split(':')[1] + " " + am_pm %></h4>
+                    <h4><%= visit.date.toLocaleString('en-us',{month:'short', day: 'numeric', year:'numeric'}) %></h4>
+                    <a href="/clinic-history/details/<%= visit._id %>">More Information</a>
+            </div>
+        <% }); %>
+    <% } %>
+    
+</body>
+</html>

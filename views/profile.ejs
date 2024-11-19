@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile: <%= profile_info.name %></title>
+    <link rel="stylesheet" href="/css/profile.css">
+    
+    <a href="/">MediSync</a>
+  </head>
+  <body>
+
+    <div>
+        <p id="name">Name: <%= profile_info.name %></p>
+        <p id="student_id">Student ID: <%= profile_info.student_id %></p>
+        <p id="section">Section: <%= profile_info.section %></p>
+        <p id="rfid">RFID: <%= profile_info.rfid %></p>
+    </div>
+
+    <div>
+        <p id="guardian_name">Guardian Name: <%= profile_info.guardian_name %></p>
+        <p id="guardian_number">Guardian Contact Number: <%= profile_info.guardian_number %></p>
+        <p id="adviser_name">Adviser Name: <%= profile_info.adviser_name %></p>
+        <p id="adviser_number">Adviser Contact Number: <%= profile_info.adviser_number %></p>
+    </div>
+    
+    <div>
+        <p id="age">Age: <%= profile_info.age %></p>
+        <p id="sex">Sex: <%= profile_info.sex %></p>
+        <p id="address">Address: <%= profile_info.address %></p>
+        <p id="chronic_health_condition">Chronic Health Condition/s: <%= profile_info.chronic_health_condition %></p>
+        <p id="medications">Medications: <%= profile_info.medications %></p>
+        <p id="doctors">Doctor/s: <%= profile_info.doctors %></p>
+        <p id="doctor_number">Doctors Contact Number: <%= profile_info.doctor_number %></p>
+        <p id="health_history">Health History: <%= profile_info.health_history %></p>
+    </div>
+
+    <div class="history_div">
+      <h2>CLINIC HISTORY</h2>
+      <% if (visits.length > 0) { %>
+          <% visits.forEach(visit => { %>
+            <div class="visit_div">
+              <h3><%= visit.reason %></h3>
+              <h4><%= visit.date.toLocaleString('en-us',{month:'short', day: 'numeric', year:'numeric'}) %></h4>
+              <a href="/clinic-history/details/<%= visit._id %>">View Details</a>
+            </div>
+          <% }); %>
+      <% } %>
+    </div>
+
+    <button id="visit_button">Visit Done</button>
+    
+    <script type="text/javascript" src="../js/visit.js"></script>
+  </body>
+</html>

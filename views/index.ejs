@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediSync</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <nav>
+      <a href="/">MediSync</a>
+    </nav>
+  </head>
+  <body>
+    <button id="scan_button">Scan</button>
+
+    <input type="number" name="rfid" id="rfid_input" />
+
+    <div class="history_div">
+      <h2>VISIT HISTORY</h2>
+      <a href="clinic-history">View Visit History</a>
+
+      <% if (visits.length > 0){ %> <% visits.forEach(visit => { %>
+      <div class="visit_div">
+        <h3><%= visit.name %> - <%= visit.reason %></h3>
+        <% if(visit.time_start.split(':')[0] > 12){ %> 
+          <% var hour = visit.time_start.split(':')[0] - 12 %> 
+          <% var am_pm = "PM" %> 
+        <% } else { %> 
+          <% var hour = visit.time_start.split(':')[0] %> 
+          <% var am_pm = "AM" %> 
+        <% } %>
+        <h4><%= hour +":"+ visit.time_start.split(':')[1] + " " + am_pm %></h4>
+        <h4><%= visit.date.toLocaleString('en-us',{month:'short', day: 'numeric', year:'numeric'}) %></h4>
+        
+        <a href="/clinic-history/details/<%= visit._id %>">More Details</a>
+      </div>
+      <% }) %> <% } %>
+    </div>
+
+    <div class="total_div">
+      <h2>TOTAL CLINIC VISITS</h2>
+      <% const date = new Date(); %>
+      <% const months = ["January", "February", "March", "April", "May", "June", 
+      "July", "August", "September","October", "November", "December"] %>
+
+      <% var today_counter = 0; %>
+      <% visits.forEach(visit => { %>
+        <% if (visit.date.getMonth() === date.getMonth() && visit.date.getDate() === date.getDate() && visit.date.getFullYear() === date.getFullYear()){ %>
+          <% today_counter += 1 %>
+        <% }
+      }); %>
+
+      <% var month_counter = 0; %>
+      <% visits.forEach(visit => { %>
+        <% if (visit.date.getMonth() === date.getMonth() && visit.date.getFullYear() === date.getFullYear()){ %>
+          <% month_counter += 1 %>
+        <% }
+      }); %>
+
+      <h3>Today</h3>
+      <h1><%= today_counter %></h1>
+      <h3>Month of <%= months[date.getMonth()] %></h3>
+      <h1><%= month_counter%></h1>
+      <h3>All visits</h3>
+      <h1><%= visits.length %></h1>
+    </div>
+
+    <script type="text/javascript" src="../js/index.js"></script>
+  </body>
+</html>

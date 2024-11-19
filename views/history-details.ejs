@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Details</title>
+</head>
+<body>
+    <h1>HISTORY DETAILS</h1>
+    <div>
+        <h3>Reason: <%= visit.reason %></h3>
+        <h4>Details: <%= visit.details %></h4>
+        <h3>Medications Given: <%= visit.medications %></h3>
+        <h4>Nurse: <%= visit.nurse %></h4>
+    </div>
+    <div>
+        <h3>Name: <%= user.name %></h3>
+        <h3>Student ID: <%= user.student_id %></h3>
+        <h3>Section: <%= user.section %></h3>
+        
+        <h3>Date: <%= visit.date.toLocaleString('en-us',{month:'short', day: 'numeric', year:'numeric'}) %> </h3>
+
+        <% if(visit.time_start.split(':')[0] > 12){ %>
+            <% var hour_start = visit.time_start.split(':')[0] - 12 %>
+            <% var am_pm_start = "PM" %>
+        <% } else { %>
+            <% var hour_start = visit.time_start.split(':')[0] %>
+            <% var am_pm_start = "AM" %>
+        <% } %>
+
+        <% if(visit.time_end.split(':')[0] > 12){ %>
+            <% var hour_end = visit.time_end.split(':')[0] - 12 %>
+            <% var am_pm_end = "PM" %>
+        <% } else { %>
+            <% var hour_end = visit.time_end.split(':')[0] %>
+            <% var am_pm_end = "AM" %>
+        <% } %>
+
+        <h3>Time: <%= hour_start +":"+ visit.time_start.split(':')[1] + " " + am_pm_start %>
+        - <%= hour_end +":"+ visit.time_end.split(':')[1] + " " + am_pm_end %>
+        </h3>
+
+    </div>
+
+    
+</body>
+</html>

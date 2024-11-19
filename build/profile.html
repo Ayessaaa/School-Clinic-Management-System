@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediSYNC</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "DM Sans";
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="p-8 shadow-md bg-gray-50 drop-shadow-sm h-screen invisible 2xl:visible w-1/6 absolute rounded-r-2xl"
+    >
+      <p class="font-extrabold text-3xl">MediSYNC</p>
+
+      <div class="grid grid-cols-1">
+        <div
+          onclick="window.location.href = 'index.html';"
+          class="group flex items-center mx-2 mt-3 px-4 mb-1 cursor-pointer"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6 inline stroke-gray-500 group-hover:stroke-red-500"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+            />
+          </svg>
+          <span
+            class="m-2 font-medium text-md text-gray-700 group-hover:text-black"
+            >Home</span
+          >
+        </div>
+
+        <div
+          onclick="window.location.href = 'profile.html';"
+          class="group flex items-center mx-2 px-4 bg-white rounded-xl shadow-sm border hover:bg-red-100 hover:border-red-200 border-gray-200"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6 inline stroke-red-400 stroke-2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"
+            />
+          </svg>
+
+          <span class="mx-3 my-2 font-semibold text-lg">Students</span>
+        </div>
+
+        <div
+          onclick="window.location.href = 'history.html';"
+          class="group flex items-center mx-2 px-4 cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6 inline stroke-gray-500 group-hover:stroke-red-500"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+
+          <span
+            class="m-2 font-medium text-md text-gray-700 group-hover:text-black"
+            >History</span
+          >
+        </div>
+
+        <div
+        onclick="window.location.href = 'form.html.html';"
+        class="group flex items-center mx-2 px-4 cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6 inline stroke-gray-500 group-hover:stroke-red-500"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z"
+            />
+          </svg>
+
+          <span
+            class="m-2 font-medium text-md text-gray-700 group-hover:text-black"
+            >Form</span
+          >
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid w-100 2xl:ml-96 lg:mr-14 pt-14 gap-3 lg:grid-cols-3 lg:ml-14 m-0"
+    >
+      <div class="lg:col-span-2 col-span-3 rounded-lg py-5 px-10 mx-auto *:text-center">
+        <p class="font-extrabold text-3xl">Paula Reyes</p>
+        <br />
+        <p class="text-gray-500 font-semibold text-md">020001282</p>
+        <p class="text-gray-400 text-sm font-medium">ITMAWD</p>
+      </div>
+
+      <div
+        class="lg:col-span-1 col-span-3 row-span-3 border rounded-lg shadow-sm drop-shadow-sm m-2 py-5 px-8 overflow-y-auto h-72 lg:h-[700px] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300"
+      >
+        <p class="font-bold text-xl">Clinic History</p>
+        <!-- DIVS CLINIC HISTORIESSSSSSSSS -->
+        <div class="grid grid-cols-1 mt-5 mb-3">
+
+          <div
+            class="bg-gray-50 rounded-lg shadow-sm drop-shadow-sm border py-3 px-5 hover:bg-gray-100 cursor-pointer"
+          >
+            <p class="font-semibold text-lg">Headaches and Dizziness</p>
+            <p class="font-semibold text-sm text-gray-500">
+              Nurse: Emily Carter
+            </p>
+            <p class="flex place-items-center m-2 text-sm">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-4 inline stroke-red-400 stroke-2 mr-2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
+                />
+              </svg>
+              Nov 7, 2024
+            </p>
+            <p class="flex place-items-center m-2 -mt-1 text-sm">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-4 inline stroke-2 mr-2 stroke-red-400"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
+            </svg>
+
+            3:30 PM - 3:47 PM</p>
+          </div>
+
+          
+        </div>
+      
+      </div>
+
+      <div class="lg:col-span-1 col-span-3 border rounded-lg shadow-sm drop-shadow-sm m-2 py-5 px-8">
+        <p class="font-bold text-xl">Contact Information</p>
+        <p class="font-semibold text-lg text-gray-600 mt-3">Guardian</p>
+        <p class="flex place-items-center m-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-5 inline stroke-2 mr-2 stroke-red-400"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+            />
+          </svg>
+
+          Roy Reyes
+        </p>
+        <p class="flex place-items-center m-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-5 inline stroke-2 mr-2 stroke-red-400"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+            />
+            </svg>09129928157
+        </p>
+        <p class="font-semibold text-lg text-gray-600">Adviser</p>
+        <p class="flex place-items-center m-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-5 inline stroke-2 mr-2 stroke-red-400"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+            />
+          </svg>
+          Jane Garcia
+        </p>
+        <p class="flex place-items-center m-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-5 inline stroke-2 mr-2 stroke-red-400"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+            />
+          </svg>
+          09893816627
+        </p>
+      </div>
+      <div
+        class=" lg:col-span-1 col-span-3 border rounded-lg shadow-sm drop-shadow-sm m-2 py-5 px-8 row-span-2"
+      >
+        <p class="font-bold text-xl">Medical Information</p>
+        <p class="mt-3 ml-2 font-semibold">
+          Age: <span class="font-normal">17</span>
+        </p>
+        <p class="ml-2 font-semibold">
+          Sex: <span class="font-normal">Female</span>
+        </p>
+        <p class="ml-2 font-semibold">
+          Address:
+          <span class="font-normal">123 Main Street, Malolos, Bulacan</span>
+        </p>
+        <p class="mt-3 font-bold text-gray-600">Chronic Health Conditions</p>
+        <ul class="list-disc pl-8">
+          <li>Asthma</li>
+          <li>Heart Condition</li>
+        </ul>
+        <p class="mt-3 font-bold text-gray-600">Medications</p>
+        <ul class="list-disc pl-8">
+          <li>Salbutamol</li>
+        </ul>
+        <p class="mt-3 font-bold text-gray-600">Doctor</p>
+        <p class="flex place-items-center m-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-5 inline stroke-2 mr-2 stroke-red-400"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+            />
+          </svg>
+          Barry Perez
+        </p>
+        <p class="flex place-items-center m-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-5 inline stroke-2 mr-2 stroke-red-400"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+            />
+          </svg>
+          09231627481
+        </p>
+        <p class="mt-5 font-bold text-gray-600">Health History</p>
+        <div
+          class="border border-red-200 rounded-md bg-red-50 py-2 px-3 mt-2 text-sm mb-3"
+        >
+          Been hospitalized for asthma and heart conditions, can get easily
+          tired.
+        </div>
+      </div>
+      <div
+        class="lg:col-span-1 col-span-3 border rounded-lg shadow-sm bg-red-100 border-red-300 drop-shadow-sm m-2 py-5 px-8"
+      >
+        <div class="flex place-items-center">
+          <p class="font-bold text-xl text-red-400">Send SMS</p>
+          <input
+            type="number"
+            placeholder="Contact Number"
+            value="09129928157"
+            class="text-sm text-gray-800 font-semibold pl-3 w-32 text-center rounded-md py-0.5 ml-10 shadow-sm absolute right-0 mr-8 drop-shadow-sm border"
+          />
+        </div>
+
+        <textarea
+          class="w-full mt-3 h-20 rounded-sm shadow-sm drop-shadow-sm py-2 px-3 text-sm"
+        ></textarea>
+        <button
+          class="bg-red-300 p-1 border mt-2 font-semibold border-red-400 shadow-sm rounded-lg text-white text-sm px-4 hover:bg-red-400 hover:border-red-500"
+        >
+          Send
+        </button>
+      </div>
+      <div class="col-span-3">
+        <div class="flex place-content-center mt-5">
+          <button class="bg-red-300 py-2 px-4 w-64 text-white font-bold text-xl rounded-lg border border-red-400 hover:bg-red-200 hover:border-red-300">
+            Visit Done
+          </button>
+        </div>
+        
+      </div>
+    </div>
+  </body>
+</html>

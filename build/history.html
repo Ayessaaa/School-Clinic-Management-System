@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediSYNC</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "DM Sans";
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="p-8 shadow-md bg-gray-50 drop-shadow-sm h-screen invisible 2xl:visible w-1/6 rounded-r-2xl fixed"
+    >
+      <p class="font-extrabold text-3xl">MediSYNC</p>
+      <div class="grid grid-cols-1">
+        <div
+          onclick="window.location.href = 'index.html';"
+          class="group flex items-center mx-2 mt-3 px-4 mb-1 cursor-pointer"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6 inline stroke-gray-500 group-hover:stroke-red-500"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+            />
+          </svg>
+          <span
+            class="m-2 font-medium text-md text-gray-700 group-hover:text-black"
+            >Home</span
+          >
+        </div>
+
+        <div
+          onclick="window.location.href = 'profile.html';"
+          class="group flex items-center mx-2 px-4 cursor-pointer"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6 inline stroke-gray-500 group-hover:stroke-red-500"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"
+            />
+          </svg>
+
+          <span
+            class="m-2 font-medium text-md text-gray-700 group-hover:text-black"
+            >Students</span
+          >
+        </div>
+
+        <div
+          onclick="window.location.href = 'history.html';"
+          class="group flex items-center mx-2 px-4 bg-white rounded-xl shadow-sm border hover:bg-red-100 hover:border-red-200 border-gray-200"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6 inline stroke-red-400 stroke-2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+
+          <span class="mx-3 my-2 font-semibold text-lg">History</span>
+        </div>
+
+        <div
+          onclick="window.location.href = 'form.html.html';"
+          class="group flex items-center mx-2 px-4 cursor-pointer"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6 inline stroke-gray-500 group-hover:stroke-red-500"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z"
+            />
+          </svg>
+
+          <span
+            class="m-2 font-medium text-md text-gray-700 group-hover:text-black"
+            >Form</span
+          >
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid place-content-center w-full md:w-2/3 lg:w-1/2 mx-auto pt-10 px-5 pb-20"
+    >
+      <div>
+        <p class="text-center text-3xl font-extrabold mb-12">
+          Clinic Visit History
+        </p>
+
+        <div class="grid grid-cols-1 place-content-center gap-4">
+          <div class="py-5 px-8 border rounded-xl shadow-sm drop-shadow-sm hover:bg-red-50 hover:border-red-100 cursor-pointer">
+            <p class="font-bold text-lg mb-3 line">
+              Student injured ankle during recess.
+            </p>
+            <p class="text-md text-gray-600">
+              The student who was playing soccer during recess when he twisted
+              his left ankle. He reports immediate pain and swelling. There is
+              no visible bruising, and the student is able to bear partial
+              weight on the foot, though he is limping. No history of previous
+              ankle injuries. Vitals: BP 100/60 mmHg, pulse 90 bpm, temperature
+              98.4°F. Mild swelling observed around the lateral aspect of the
+              ankle with no open wounds.
+            </p>
+            <p class="flex place-items-center mt-8 mx-2 text-sm font-medium">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-4 inline stroke-red-400 stroke-2 mr-2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                />
+              </svg>
+
+              Paula Reyes
+            </p>
+            <p class="flex place-items-center m-2 mt-1 text-sm">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-4 inline stroke-red-400 stroke-2 mr-2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
+                />
+              </svg>
+              Nov 7, 2024
+            </p>
+            <p class="flex place-items-center m-2 -mt-1 text-sm">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-4 inline stroke-2 mr-2 stroke-red-400"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
+
+              3:30 PM - 3:47 PM
+            </p>
+          </div>
+          <!-- histories -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

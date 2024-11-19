@@ -6,7 +6,7 @@ window.onload = function () {
   visitButton.addEventListener("click", function (event) {
     window.location.href =
       "/visit-done/" +
-      rfidNumber.split(" ")[1] +
+      rfidNumber +
       "/" +
       time.getHours() +
       ":" +

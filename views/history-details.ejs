@@ -74,7 +74,7 @@
         </div>
 
         <div
-          onclick="window.location.href = 'history.html';"
+          onclick="window.location.href = 'clinic-history';"
           class="group flex items-center mx-2 px-4 bg-white rounded-xl shadow-sm border hover:bg-red-100 hover:border-red-200 border-gray-200"
         >
           <svg
@@ -151,6 +151,7 @@
       </div>
       <div
         class="border border-red-300 rounded-lg bg-red-100 px-6 py-5 xl:col-span-1 col-span-4 text-center xl:text-left cursor-pointer hover:bg-red-200 hover:border-red-500"
+        onclick="window.location.href = '/profile/<%= visit.rfid %>'"
       >
         <p class="text-xl font-bold">Patient</p>
         <p class="font-semibold mt-3"><%= user.name %></p>

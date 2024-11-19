@@ -34,6 +34,16 @@ const profile = (req, res) => {
     });
 };
 
+const visit_done = (req, res) => {
+  User.find({ rfid: req.params.rfid })
+    .then((result) => {
+      res.render("visit-done", { user: result[0] });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 const visit_done_post = (req, res) => {
   var dd = String(day.getDate()).padStart(2, "0");
   var mm = String(day.getMonth() + 1).padStart(2, "0"); //January is 0!
@@ -137,4 +147,5 @@ module.exports = {
   home,
   clinic_history_details,
   user_history,
+  visit_done
 };

@@ -27,9 +27,7 @@ app.use(morgan("dev"));
 
 app.get("/", siteController.home);
 
-app.get("/visit-done/:rfid/:time", (req, res) => {
-  res.render("visit-done");
-});
+app.get("/visit-done/:rfid/:time", siteController.visit_done);
 
 app.post("/visit-done/:rfid/:time", siteController.visit_done_post);
 

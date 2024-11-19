@@ -131,11 +131,14 @@
       >
         <p class="font-extrabold text-3xl"><%= profile_info.name %></p>
         <br />
-        <p class="text-gray-500 font-semibold text-md">
+        <p class="text-gray-600 font-semibold text-md">
           <%= profile_info.student_id %>
         </p>
-        <p class="text-gray-400 text-sm font-medium">
+        <p class="text-gray-500 text-sm font-medium">
           <%= profile_info.section %>
+        </p>
+        <p class="text-gray-400 text-xs font-medium" id="rfid">
+          <%= profile_info.rfid %>
         </p>
       </div>
 
@@ -145,11 +148,14 @@
         <p class="font-bold text-xl">Clinic History</p>
         <!-- DIVS CLINIC HISTORIESSSSSSSSS -->
         <div class="grid grid-cols-1 mt-5 mb-3">
+          <% if (visits.length > 0) { %> <% visits.forEach(visit => { %>
           <div
-            class="bg-gray-50 rounded-lg shadow-sm drop-shadow-sm border py-3 px-5 hover:bg-gray-100 cursor-pointer"
+            class="bg-gray-50 rounded-lg shadow-sm drop-shadow-sm border py-3 px-5 hover:bg-gray-100 cursor-pointer mt-3"
           >
-            <% if (visits.length > 0) { %> <% visits.forEach(visit => { %>
-            <div class="visit_div" onclick="window.location.href = '/clinic-history/details/<%= visit._id %>'">
+            <div
+              class="visit_div"
+              onclick="window.location.href = '/clinic-history/details/<%= visit._id %>'"
+            >
               <p class="font-semibold text-lg"><%= visit.reason %></p>
               <p class="font-semibold text-sm text-gray-500">
                 <%= visit.nurse %>
@@ -173,20 +179,20 @@
                 'numeric', year:'numeric'}) %>
               </p>
 
-              <% if(visit.time_start.split(':')[0] > 12){ %>
-                  <% var hour_start = visit.time_start.split(':')[0] - 12 %>
-                  <% var am_pm_start = "PM" %>
-              <% } else { %>
-                  <% var hour_start = visit.time_start.split(':')[0] %>
-                  <% var am_pm_start = "AM" %>
-              <% } %>
-      
-              <% if(visit.time_end.split(':')[0] > 12){ %>
-                  <% var hour_end = visit.time_end.split(':')[0] - 12 %>
-                  <% var am_pm_end = "PM" %>
-              <% } else { %>
-                  <% var hour_end = visit.time_end.split(':')[0] %>
-                  <% var am_pm_end = "AM" %>
+              <% if(visit.time_start.split(':')[0] > 12){ %> 
+                <% var hour_start = visit.time_start.split(':')[0] - 12 %> 
+                <% var am_pm_start = "PM" %> 
+              <% } else { %> 
+                <% var hour_start = visit.time_start.split(':')[0] %> 
+                <% var am_pm_start = "AM" %> 
+              <% } %> 
+
+              <% if(visit.time_end.split(':')[0] > 12){ %> 
+                <% var hour_end = visit.time_end.split(':')[0] - 12 %> 
+                <% var am_pm_end = "PM" %>
+              <% } else { %> 
+                <% var hour_end = visit.time_end.split(':')[0] %>
+                <% var am_pm_end = "AM" %> 
               <% } %>
 
               <p class="flex place-items-center m-2 -mt-1 text-sm">
@@ -204,17 +210,13 @@
                     d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
                   />
                 </svg>
-                <%= hour_start +":"+ visit.time_start.split(':')[1] + " " + am_pm_start %>
-                - 
-                <%= hour_end +":"+ visit.time_end.split(':')[1] + " " + am_pm_end %>
+                <%= hour_start +":"+ visit.time_start.split(':')[1] + " " +
+                am_pm_start %> - <%= hour_end +":"+ visit.time_end.split(':')[1]
+                + " " + am_pm_end %>
               </p>
             </div>
-            <% }); %> <% } %>
-            
-            
-            
-            
           </div>
+          <% }); %> <% } %>
         </div>
       </div>
 
@@ -254,8 +256,9 @@
               stroke-linecap="round"
               stroke-linejoin="round"
               d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
-            /></svg>
-            <%= profile_info.guardian_number %>
+            />
+          </svg>
+          <%= profile_info.guardian_number %>
         </p>
         <p class="font-semibold text-lg text-gray-600">Adviser</p>
         <p class="flex place-items-center m-2">
@@ -354,7 +357,7 @@
         <div
           class="border border-red-200 rounded-md bg-red-50 py-2 px-3 mt-2 text-sm mb-3"
         >
-        <%= profile_info.health_history %>
+          <%= profile_info.health_history %>
         </div>
       </div>
       <div
@@ -381,11 +384,13 @@
       </div>
       <div class="col-span-3">
         <div class="flex place-content-center mt-5">
-          <button
+          <button id="visit_button"
             class="bg-red-300 py-2 px-4 w-64 text-white font-bold text-xl rounded-lg border border-red-400 hover:bg-red-200 hover:border-red-300"
           >
             Visit Done
           </button>
+
+          <script type="text/javascript" src="../js/visit.js"></script>
         </div>
       </div>
     </div>

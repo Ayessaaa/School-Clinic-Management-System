@@ -159,29 +159,54 @@
         <p class="font-semibold text-sm text-gray-600"><%= user.section %></p>
         <p class="font-semibold text-sm text-red-700 mt-5"><%= visit.date.toLocaleString('en-us',{month:'short', day: 'numeric', year:'numeric'}) %></p>
 
-        <% if(visit.time_start.split(':')[0] > 12){ %>
-            <% var hour_start = visit.time_start.split(':')[0] - 12 %>
-            <% var am_pm_start = "PM" %>
-        <% } else { %>
-            <% var hour_start = visit.time_start.split(':')[0] %>
-            <% var am_pm_start = "AM" %>
-        <% } %>
+        <% 
+          var hour_start = parseInt(visit.time_start.split(':')[0]); 
+          var minute_start = visit.time_start.split(':')[1];
+          var am_pm_start = '';
 
-        <% if(visit.time_end.split(':')[0] > 12){ %>
-            <% var hour_end = visit.time_end.split(':')[0] - 12 %>
-            <% var am_pm_end = "PM" %>
-        <% } else { %>
-            <% var hour_end = visit.time_end.split(':')[0] %>
-            <% var am_pm_end = "AM" %>
-        <% } %>
+          if (hour_start < 12) { 
+            if (hour_start === 0) { 
+              hour_start = 12;  // Midnight case
+            }
+            am_pm_start = 'AM'; 
+          } else { 
+            if (hour_start === 12) {
+              hour_start = 12;  // Noon case
+            } else {
+              hour_start -= 12; // Convert PM time
+            }
+            am_pm_start = 'PM'; 
+          }
+        %>
+
+        <% 
+        var hour_end = parseInt(visit.time_end.split(':')[0]); 
+        var minute_end = visit.time_end.split(':')[1];
+        var am_pm_end = '';
+
+        if (hour_end < 12) { 
+          if (hour_end === 0) { 
+            hour_end = 12;  // Midnight case
+          }
+          am_pm_end = 'AM'; 
+        } else { 
+          if (hour_end === 12) {
+            hour_end = 12;  // Noon case
+          } else {
+            hour_end -= 12; // Convert PM time
+          }
+          am_pm_end = 'PM'; 
+        }
+        %>
 
         <p class="font-semibold text-sm text-red-700">
-          <%= hour_start +":"+ visit.time_start.split(':')[1] + " " + am_pm_start %>
+          <%= hour_start + ":" + minute_start + " " + am_pm_start %>
           - 
-          <%= hour_end +":"+ visit.time_end.split(':')[1] + " " + am_pm_end %>
+          <%= hour_end + ":" + minute_end + " " + am_pm_end %>
         </p>
       </div>
       <div
+        onclick="history.back()"
         class="mt-2 rounded-md border col-span-4 py-1 text-center tracking-widest font-extrabold bg-gray-50 text-gray-300 shadow-sm drop-shadow-sm cursor-pointer hover:text-gray-400 hover:bg-gray-100"
       >
         CLOSE

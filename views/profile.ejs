@@ -179,21 +179,45 @@
                 'numeric', year:'numeric'}) %>
               </p>
 
-              <% if(visit.time_start.split(':')[0] > 12){ %> 
-                <% var hour_start = visit.time_start.split(':')[0] - 12 %> 
-                <% var am_pm_start = "PM" %> 
-              <% } else { %> 
-                <% var hour_start = visit.time_start.split(':')[0] %> 
-                <% var am_pm_start = "AM" %> 
-              <% } %> 
+              <% 
+                var hour_start = parseInt(visit.time_start.split(':')[0]); 
+                var minute_start = visit.time_start.split(':')[1];
+                var am_pm_start = '';
 
-              <% if(visit.time_end.split(':')[0] > 12){ %> 
-                <% var hour_end = visit.time_end.split(':')[0] - 12 %> 
-                <% var am_pm_end = "PM" %>
-              <% } else { %> 
-                <% var hour_end = visit.time_end.split(':')[0] %>
-                <% var am_pm_end = "AM" %> 
-              <% } %>
+                if (hour_start < 12) { 
+                  if (hour_start === 0) { 
+                    hour_start = 12;  // Midnight case
+                  }
+                  am_pm_start = 'AM'; 
+                } else { 
+                  if (hour_start === 12) {
+                    hour_start = 12;  // Noon case
+                  } else {
+                    hour_start -= 12; // Convert PM time
+                  }
+                  am_pm_start = 'PM'; 
+                }
+              %>
+
+              <% 
+                var hour_end = parseInt(visit.time_end.split(':')[0]); 
+                var minute_end = visit.time_end.split(':')[1];
+                var am_pm_end = '';
+
+                if (hour_end < 12) { 
+                  if (hour_end === 0) { 
+                    hour_end = 12;  // Midnight case
+                  }
+                  am_pm_end = 'AM'; 
+                } else { 
+                  if (hour_end === 12) {
+                    hour_end = 12;  // Noon case
+                  } else {
+                    hour_end -= 12; // Convert PM time
+                  }
+                  am_pm_end = 'PM'; 
+                }
+              %>
 
               <p class="flex place-items-center m-2 -mt-1 text-sm">
                 <svg
@@ -210,9 +234,9 @@
                     d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
                   />
                 </svg>
-                <%= hour_start +":"+ visit.time_start.split(':')[1] + " " +
-                am_pm_start %> - <%= hour_end +":"+ visit.time_end.split(':')[1]
-                + " " + am_pm_end %>
+                <%= hour_start + ":" + minute_start + " " + am_pm_start %>
+                - 
+                <%= hour_end + ":" + minute_end + " " + am_pm_end %>
               </p>
             </div>
           </div>
@@ -385,14 +409,16 @@
       <div class="col-span-3">
         <div class="flex place-content-center mt-5">
           <button id="visit_button"
+          
             class="bg-red-300 py-2 px-4 w-64 text-white font-bold text-xl rounded-lg border border-red-400 hover:bg-red-200 hover:border-red-300"
           >
             Visit Done
           </button>
 
-          <script type="text/javascript" src="../js/visit.js"></script>
+          
         </div>
       </div>
     </div>
+    <script type="text/javascript" src="../../js/visit.js"></script>
   </body>
 </html>

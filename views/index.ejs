@@ -182,7 +182,7 @@
       </div>
 
       <div class="col-span-2 mt-5">
-        <div class="flex items-center m-4 cursor-pointer">
+        <div class="flex items-center m-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -197,7 +197,7 @@
               d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
             />
           </svg>
-          <span class="font-bold text-xl">Clinic Visit History</span>
+          <span class="font-bold text-xl cursor-pointer" onclick="window.location.href='/clinic-history'">Clinic Visit History</span>
         </div>
 
         <div
@@ -226,12 +226,27 @@
                 <td class="text-gray-600"><%= visit.section %></td>
                 <td class=""><%= visit.reason %></td>
 
-                <% if(visit.time_start.split(':')[0] > 12){ %> <% var hour =
-                visit.time_start.split(':')[0] - 12 %> <% var am_pm = "PM" %> <%
-                } else { %> <% var hour = visit.time_start.split(':')[0] %> <%
-                var am_pm = "AM" %> <% } %>
+                <% 
+                  var hour = parseInt(visit.time_start.split(':')[0]); 
+                  var minute = visit.time_start.split(':')[1];
+                  var am_pm = '';
+
+                  if (hour < 12) { 
+                    if (hour === 0) { 
+                      hour = 12;  // Midnight case
+                    }
+                    am_pm = 'AM'; 
+                  } else { 
+                    if (hour === 12) {
+                      hour = 12;  // Noon case
+                    } else {
+                      hour -= 12; // Convert PM time
+                    }
+                    am_pm = 'PM'; 
+                  }
+                %>
                 <td class="text-gray-500">
-                  <%= hour +":"+ visit.time_start.split(':')[1] + " " + am_pm %>
+                  <%= hour + ":" + minute + " " + am_pm %>
                 </td>
                 <td class="text-gray-500">
                   <%= visit.date.toLocaleString('en-us',{month:'short', day:
@@ -253,6 +268,6 @@
       />
     </div>
 
-    <script type="text/javascript" src="../js/index.js"></script>
+    <script type="text/javascript" src="../../js/index.js"></script>
   </body>
 </html>

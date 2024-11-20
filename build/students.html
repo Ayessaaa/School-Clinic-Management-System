@@ -27,7 +27,7 @@
 
       <div class="grid grid-cols-1">
         <div
-          onclick="window.location.href = '/';"
+          onclick="window.location.href = 'index.html';"
           class="group flex items-center mx-2 mt-3 px-4 mb-1 cursor-pointer"
         >
           <svg
@@ -51,7 +51,7 @@
         </div>
 
         <div
-          onclick="window.location.href = 'students';"
+          onclick="window.location.href = 'profile.html';"
           class="group flex items-center mx-2 px-4 bg-white rounded-xl shadow-sm border hover:bg-red-100 hover:border-red-200 border-gray-200"
         >
           <svg
@@ -73,7 +73,7 @@
         </div>
 
         <div
-          onclick="window.location.href = 'clinic-history.html';"
+          onclick="window.location.href = 'history.html';"
           class="group flex items-center mx-2 px-4 cursor-pointer"
         >
           <svg
@@ -123,77 +123,49 @@
         </div>
       </div>
     </div>
-
-    <form method="post">
     <div
-      class="grid place-content-center w-full md:w-2/3 lg:w-1/2 mx-auto pt-10 px-5 pb-20 grid-cols-4 gap-4"
+      class="grid place-content-center w-full md:w-2/3 lg:w-1/2 mx-auto pt-10 px-5 pb-20"
     >
-      <div class="col-span-4 text-center mt-5 mb-14">
-        <p class="text-3xl font-extrabold">Clinic Visit Details</p>
-      </div>
-      <div
-        class="border rounded-lg shadow-sm drop-shadow-sm px-8 py-5 xl:col-span-3 col-span-4"
-      >
-        <p class="text-xl font-bold">Visit</p>
-        
-          <div class="flex place-items-top mt-5 ml-3">
-            <label for="reason" class="font-semibold mr-4"> Reason:</label>
-            <input
-              type="text"
-              name="reason"
-              id="reason"
-              class="font-medium text-sm py-1 px-2 border rounded-md w-5/6 hover:bg-red-50 hover:border-red-200 focus:bg-red-100 focus:outline-none focus:ring-1 focus:ring-red-300"
-              placeholder="Reason"
-            />
-          </div>
-          <div class="flex place-items-top mt-3 ml-3">
-            <label for="details" class="font-semibold mr-5"> Details:</label>
-            <textarea
-              placeholder="Details"
-              name="details"
-              id="details"
-              class="font-medium py-1 px-2 border rounded-md w-5/6 text-sm h-20 hover:bg-red-50 hover:border-red-200 focus:bg-red-100 focus:outline-none focus:ring-1 focus:ring-red-300"
-            ></textarea>
-          </div>
+      <div>
+        <p class="text-center text-3xl font-extrabold mb-12">
+          Student Profiles
+        </p>
 
-          <div class="flex place-items-top mt-3 ml-3">
-            <label for="medications" class="font-semibold mr-8">
-              Medications Given:</label
-            >
-            <textarea
-              placeholder="Medications Given (separated my commas)"
-              name="medications"
-              id="medications"
-              class="font-medium py-1 px-2 border rounded-md w-4/6 text-sm h-20 hover:bg-red-50 hover:border-red-200 focus:bg-red-100 focus:outline-none focus:ring-1 focus:ring-red-300"
-            ></textarea>
-          </div>
+        <div class="flex flex-wrap place-content-center">
+          <div
+            class=" py-5 px-8 border mx-2 my-2 rounded-xl shadow-sm drop-shadow-sm hover:bg-red-50 hover:border-red-100 cursor-pointer"
+          >
+            <div class="flex place-items-center my-2 mr-2 text-sm font-medium">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-16 inline stroke-red-400 mr-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                />
+              </svg>
+              <p>
+                <span class="font-bold text-lg mb-3 line">Paula Reyes</span><br />
+                <span>02000123276</span><br/>
+                <span>STEM 11 A</span>
+              </p>
+            </div>
 
-          <div class="flex place-items-top mt-3 mb-3 ml-3">
-            <label for="nurse" class="font-semibold mr-6"> Nurse:</label>
-            <input
-              type="text"
-              name="nurse"
-              id="nurse"
-              class="font-medium text-sm py-1 px-2 border rounded-md w-5/6 hover:bg-red-50 hover:border-red-200 focus:bg-red-100 focus:outline-none focus:ring-1 focus:ring-red-300"
-              placeholder="Name"
-            />
+            
+            
           </div>
-        </form>
-      </div>
-      <div
-        class="border border-red-300 rounded-lg bg-red-100 px-6 py-5 xl:col-span-1 col-span-4 text-center xl:text-left cursor-pointer hover:bg-red-200 hover:border-red-500"
-      >
-        <p class="text-xl font-bold">Patient</p>
-        <p class="font-semibold mt-3"><%= user.name %></p>
-        <p class="font-semibold text-sm mt-2 text-gray-800">020002371627</p>
-        <p class="font-semibold text-sm text-gray-600">ITMAWD 12A</p>
-      </div>
-      <input type="submit" value="SUBMIT"
-        class="mt-2 rounded-md border col-span-4 py-1 text-center tracking-widest border-red-300 font-extrabold bg-red-100 text-red-400 shadow-sm drop-shadow-sm cursor-pointer hover:text-white hover:bg-red-300 hover:border-red-500"
-      >
+          
+          </div>
+          <!-- histories -->
+        </div>
         
       </div>
     </div>
-  </form>
   </body>
 </html>

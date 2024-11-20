@@ -140,6 +140,18 @@ const user_history = (req, res) => {
     });
 };
 
+const students = (req, res) => {
+  User.find()
+    .sort({ name: 1 })
+    .then((result) => {
+      console.log(result)
+      res.render("students", { students: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 module.exports = {
   profile,
   visit_done_post,
@@ -147,5 +159,6 @@ module.exports = {
   home,
   clinic_history_details,
   user_history,
-  visit_done
+  visit_done,
+  students
 };

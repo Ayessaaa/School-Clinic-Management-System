@@ -35,6 +35,8 @@ app.get("/profile/:rfid", siteController.profile);
 
 app.get("/clinic-history", siteController.clinic_history);
 
+app.get("/students", siteController.students);
+
 app.get("/clinic-history/details/:id", siteController.clinic_history_details);
 
 app.get("/user-history/:rfid", siteController.user_history)

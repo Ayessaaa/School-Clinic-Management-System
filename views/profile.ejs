@@ -336,11 +336,17 @@
         </p>
         <p class="mt-3 font-bold text-gray-600">Chronic Health Conditions</p>
         <ul class="list-disc pl-8">
-          <li><%= profile_info.chronic_health_condition %></li>
+          <% const chronicArray = profile_info.chronic_health_condition[0].split(",") %>
+          <% chronicArray.forEach(chronic => { %>
+            <li><%= chronic %></li>
+          <% }); %>
         </ul>
         <p class="mt-3 font-bold text-gray-600">Medications</p>
         <ul class="list-disc pl-8">
-          <li><%= profile_info.medications %></li>
+          <% const medsArray = profile_info.medications[0].split(",") %>
+          <% medsArray.forEach(med => { %>
+            <li><%= med %></li>
+          <% }); %>
         </ul>
         <p class="mt-3 font-bold text-gray-600">Doctor</p>
         <p class="flex place-items-center m-2">

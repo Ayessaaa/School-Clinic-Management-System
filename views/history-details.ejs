@@ -143,7 +143,10 @@
         </p>
         <p class="font-semibold mt-3">Medications Given</p>
         <ul class="list-disc pl-8 text-sm">
-          <li><%= visit.medications %></li>
+          <% const medsArray = visit.medications[0].split(",") %>
+          <% medsArray.forEach(med => { %>
+            <li><%= med %></li>
+          <% }); %>
         </ul>
         <p class="mt-5 font-semibold">
           Nurse: <span class="font-medium"><%= visit.nurse %></span>

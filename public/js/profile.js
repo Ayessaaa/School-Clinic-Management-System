@@ -4,13 +4,11 @@ window.onload = function () {
 
   console.log(rfidNumbers[0].innerText);
 
-  
-
   for (let i = 0; i < rfidNumbers.length; i++) {
     const element = profileDivs[i];
 
     profileDivs[i].addEventListener("click", function (event) {
-        window.location.href = "/profile/" + rfidNumbers[i].innerText + "/";
-      });
+      window.location.href = "/profile/" + rfidNumbers[i].innerText + "/";
+    });
   }
 };

@@ -98,7 +98,7 @@
         </div>
 
         <div
-          onclick="window.location.href = 'form.html.html';"
+        onclick="window.location.href = 'http://clinic-fillout-form.s3-website-ap-southeast-1.amazonaws.com/fill-out.html';"
           class="group flex items-center mx-2 px-4 cursor-pointer"
         >
           <svg
@@ -398,15 +398,21 @@
           <input
             type="number"
             placeholder="Contact Number"
-            value="09129928157"
+            value="<%= profile_info.guardian_number %>"
+            id="inputnumber"
             class="focus:bg-red-50 focus:outline-none focus:ring-1 focus:ring-red-300 text-sm text-gray-800 font-semibold pl-3 w-32 text-center rounded-md py-0.5 ml-10 shadow-sm absolute right-0 mr-8 drop-shadow-sm border"
           />
         </div>
 
         <textarea
+        id="body"
           class="focus:bg-red-50 focus:outline-none focus:ring-1 focus:ring-red-300 w-full mt-3 h-20 rounded-sm shadow-sm drop-shadow-sm py-2 px-3 text-sm"
         ></textarea>
-        <button
+
+        <script>
+          
+        </script>
+        <button id="SMS"
           class="bg-red-300 p-1 border mt-2 font-semibold border-red-400 shadow-sm rounded-lg text-white text-sm px-4 hover:bg-red-400 hover:border-red-500"
         >
           Send

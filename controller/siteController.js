@@ -1,6 +1,7 @@
 const { render } = require("ejs");
 const User = require("../models/user");
 const Visit = require("../models/visit");
+const serialportgsm = require("serialport-gsm");
 
 var day = new Date();
 
@@ -8,7 +9,7 @@ const home = (req, res) => {
   Visit.find()
     .sort({ createdAt: -1 })
     .then((result) => {
-      console.log(result)
+      console.log(result);
       res.render("index", { visits: result });
     })
     .catch((err) => {
@@ -20,10 +21,14 @@ const profile = (req, res) => {
   User.find({ rfid: req.params.rfid })
     .exec()
     .then((result_user) => {
-      Visit.find({rfid: req.params.rfid })
+      Visit.find({ rfid: req.params.rfid })
         .sort({ createdAt: -1 })
         .then((result_visit) => {
-          res.render("profile", { profile_info: result_user[0], visits: result_visit });
+          res.render("profile", {
+            profile_info: result_user[0],
+            visits: result_visit,
+            rfid: req.params.rfid
+          });
         })
         .catch((err) => {
           console.log(err);
@@ -42,7 +47,7 @@ const visit_done = (req, res) => {
     .catch((err) => {
       console.log(err);
     });
-}
+};
 
 const visit_done_post = (req, res) => {
   var dd = String(day.getDate()).padStart(2, "0");
@@ -144,13 +149,80 @@ const students = (req, res) => {
   User.find()
     .sort({ name: 1 })
     .then((result) => {
-      console.log(result)
+      console.log(result);
       res.render("students", { students: result });
     })
     .catch((err) => {
       console.log(err);
     });
-}
+};
+
+const sendSMS = async (req, res) => {
+  let modem = serialportgsm.Modem();
+  let options = {
+    baudRate: 9600,
+    dataBits: 8,
+    stopBits: 1,
+    parity: "none",
+    rtscts: false,
+    xon: false,
+    xoff: false,
+    xany: false,
+    autoDeleteOnReceive: true,
+    enableConcatenation: true,
+    incomingCallIndication: true,
+    incomingSMSIndication: true,
+    pin: "",
+    customInitCommand: "",
+    cnmiCommand: "AT+CNMI=2,1,0,2,1",
+    logger: console,
+  };
+
+  console.log(req.body);
+
+  const number = req.body.inputnumber;
+  const body = req.body.body;
+  const formattedNumber = "63" + number.slice(1); // Convert to correct format
+
+  // Open modem only if it's not already open
+  if (!modem.isOpened) {
+    modem.open("COM6", options, (err) => {
+      if (err) {
+        console.error("Failed to open modem:", err);
+        return res.status(500).json({ error: "Failed to open modem" });
+      }
+
+      console.log("Modem opened successfully");
+
+      // Initialize modem
+      modem.initializeModem(() => {
+        console.log("Modem initialized");
+
+        // Send SMS
+        modem.sendSMS(formattedNumber, body, false, (err, response) => {
+
+          console.log("SMS Sent Successfully:", response);
+
+          // Close the modem after sending the SMS
+          modem.close(() => {
+            console.log("Modem closed");
+          });
+
+          // Redirect after sending SMS
+          res.redirect("/profile/" + req.params.rfid);
+        });
+      });
+    });
+  } else {
+    console.error("Modem is already open");
+    return res.status(500).json({ error: "Modem is already in use" });
+  }
+
+  // Handle modem errors
+  modem.on("error", (err) => {
+    console.error("Modem Error:", err);
+  });
+};
 
 module.exports = {
   profile,
@@ -160,5 +232,6 @@ module.exports = {
   clinic_history_details,
   user_history,
   visit_done,
-  students
+  students,
+  sendSMS,
 };

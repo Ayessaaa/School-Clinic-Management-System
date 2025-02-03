@@ -41,3 +41,5 @@ app.get("/clinic-history/details/:id", siteController.clinic_history_details);
 
 app.get("/user-history/:rfid", siteController.user_history)
 
+app.post("/send-sms/:rfid", siteController.sendSMS)
+

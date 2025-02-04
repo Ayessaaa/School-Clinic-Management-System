@@ -1,7 +1,9 @@
 const { render } = require("ejs");
 const User = require("../models/user");
 const Visit = require("../models/visit");
+const Admin = require("../models/admin");
 const serialportgsm = require("serialport-gsm");
+const bcrypt = require("bcryptjs");
 
 var day = new Date();
 
@@ -27,7 +29,7 @@ const profile = (req, res) => {
           res.render("profile", {
             profile_info: result_user[0],
             visits: result_visit,
-            rfid: req.params.rfid
+            rfid: req.params.rfid,
           });
         })
         .catch((err) => {
@@ -200,7 +202,6 @@ const sendSMS = async (req, res) => {
 
         // Send SMS
         modem.sendSMS(formattedNumber, body, false, (err, response) => {
-
           console.log("SMS Sent Successfully:", response);
 
           // Close the modem after sending the SMS
@@ -224,6 +225,34 @@ const sendSMS = async (req, res) => {
   });
 };
 
+const login = (req, res) => {
+  res.render("login", {"error":false});
+};
+
+const loginPOST = async (req, res) => {
+  // Admin.find({rfid: req.body.rfid})
+  console.log(req.body);
+  Admin.find({ rfid: req.body.rfid }).then(async (resultAdmin) => {
+    if(resultAdmin.length <= 0){
+      res.render("login", {"error":true});
+    } else {
+      const hashedPassword = await bcrypt.hash("password", 8);
+      console.log(hashedPassword);
+      bcrypt.compare(req.body.password, resultAdmin[0].password, (err, result) => {
+        if (err) {
+          console.error("Error comparing passwords:", err);
+          return;
+        }
+        if (result) {
+          res.redirect("/");
+        } else {
+          res.render("login", {"error":true});
+        }
+      });
+    }
+  });
+};
+
 module.exports = {
   profile,
   visit_done_post,
@@ -234,4 +263,6 @@ module.exports = {
   visit_done,
   students,
   sendSMS,
+  login,
+  loginPOST,
 };

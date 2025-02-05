@@ -264,6 +264,7 @@ const sendSMS = async (req, res) => {
 };
 
 const login = (req, res) => {
+  admin = false
   res.render("login", { error: false });
 };
  

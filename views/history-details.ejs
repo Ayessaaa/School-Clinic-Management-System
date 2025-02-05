@@ -17,6 +17,30 @@
         font-family: "DM Sans";
       }
     </style>
+    <script>
+      document.addEventListener('keydown', function() {
+        if (event.keyCode == 123) {
+          event.preventDefault()
+          return false;
+        } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+          event.preventDefault()
+          return false;
+        } else if (event.ctrlKey && event.keyCode == 85) {
+          event.preventDefault()
+          return false;
+        }
+      }, false);
+      
+      if (document.addEventListener) {
+        document.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+        }, false);
+      } else {
+        document.attachEvent('oncontextmenu', function() {
+          window.event.returnValue = false;
+        });
+      }
+    </script>
   </head>
   <body>
     <div

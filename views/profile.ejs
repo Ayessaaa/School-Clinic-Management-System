@@ -28,7 +28,32 @@
         -moz-appearance: textfield;
       }
     </style>
+    <script>
+      document.addEventListener('keydown', function() {
+        if (event.keyCode == 123) {
+          event.preventDefault()
+          return false;
+        } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+          event.preventDefault()
+          return false;
+        } else if (event.ctrlKey && event.keyCode == 85) {
+          event.preventDefault()
+          return false;
+        }
+      }, false);
+      
+      if (document.addEventListener) {
+        document.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+        }, false);
+      } else {
+        document.attachEvent('oncontextmenu', function() {
+          window.event.returnValue = false;
+        });
+      }
+    </script>
   </head>
+  
   <body>
     <div
       class="p-8 shadow-md bg-gray-50 drop-shadow-sm h-screen invisible 2xl:visible w-1/6 absolute rounded-r-2xl"

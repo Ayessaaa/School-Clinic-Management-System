@@ -18,6 +18,54 @@
         font-family: "DM Sans";
       }
     </style>
+    <script>
+      document.addEventListener('keydown', function() {
+        if (event.keyCode == 123) {
+          event.preventDefault()
+          return false;
+        } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+          event.preventDefault()
+          return false;
+        } else if (event.ctrlKey && event.keyCode == 85) {
+          event.preventDefault()
+          return false;
+        }
+      }, false);
+      
+      if (document.addEventListener) {
+        document.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+        }, false);
+      } else {
+        document.attachEvent('oncontextmenu', function() {
+          window.event.returnValue = false;
+        });
+      }
+    </script>
+    <script>
+      document.addEventListener('keydown', function() {
+        if (event.keyCode == 123) {
+          event.preventDefault()
+          return false;
+        } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+          event.preventDefault()
+          return false;
+        } else if (event.ctrlKey && event.keyCode == 85) {
+          event.preventDefault()
+          return false;
+        }
+      }, false);
+      
+      if (document.addEventListener) {
+        document.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+        }, false);
+      } else {
+        document.attachEvent('oncontextmenu', function() {
+          window.event.returnValue = false;
+        });
+      }
+    </script>
   </head>
   <body class="px-10 bg-gray-50">
     <div class="flex w-fit mx-auto items-baseline gap-3 mt-10 mb-10">

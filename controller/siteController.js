@@ -323,7 +323,7 @@ const emailSender = async (result, reqBody, resultVisit) => {
     secure: false,
     auth: {
       user: "medisync.sti.malolos@gmail.com",
-      pass: "reok pmjl dbuj nakk",
+      pass: "",
     },
   });
 

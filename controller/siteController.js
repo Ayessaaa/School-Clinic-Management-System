@@ -5,6 +5,8 @@ const Admin = require("../models/admin");
 const serialportgsm = require("serialport-gsm");
 const bcrypt = require("bcryptjs");
 
+const nodemailer = require("nodemailer");
+
 var day = new Date();
 
 var admin = false;
@@ -97,7 +99,8 @@ const visit_done_post = (req, res) => {
 
         visit
           .save()
-          .then((result) => {
+          .then(async (ress) => {
+            await emailSender(result[0], req.body, ress);
             res.redirect("/");
           })
           .catch((err) => {
@@ -264,10 +267,11 @@ const sendSMS = async (req, res) => {
 };
 
 const login = (req, res) => {
-  admin = false
+  admin = false;
+
   res.render("login", { error: false });
 };
- 
+
 const loginPOST = async (req, res) => {
   // Admin.find({rfid: req.body.rfid})
   console.log(req.body);
@@ -295,6 +299,146 @@ const loginPOST = async (req, res) => {
       );
     }
   });
+};
+
+const emailSender = async (result, reqBody, resultVisit) => {
+  function capitalizeFirstLetter(val) {
+    return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+  }
+
+  console.log("result", result)
+  console.log("reqBody", reqBody)
+
+  if (resultVisit.time_start.split(":")[0] > 12) {
+    var hour = resultVisit.time_start.split(":")[0] - 12;
+    var am_pm = "PM";
+  } else {
+    var hour = resultVisit.time_start.split(":")[0];
+    var am_pm = "AM";
+  }
+
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: "medisync.sti.malolos@gmail.com",
+      pass: "bshy oboo gemf ikel",
+    },
+  });
+
+  const body = `
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Birthday Reminder</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #fcf2f8;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+      }
+      .header {
+        text-align: center;
+        padding: 20px;
+      }
+      .body {
+        padding: 20px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <table class="container">
+      <!-- Header -->
+      <tr>
+        <td class="header">
+          <h2 style="margin: 10px 0">
+            Here's a receipt from your recent clinic visit
+          </h2>
+        </td>
+      </tr>
+      <!-- Body -->
+      <tr>
+        <td class="body">
+          <p>Hey Ayessa,</p>
+          <p>
+            This document serves as an official receipt for the medical visit
+            conducted at the school clinic. <br /><br />
+
+            <b>Patient Information:</b><br />
+            <ul>
+                <li><b>Name:</b> ${result.name}</li>
+                <li><b>Student ID:</b> ${result.student_id}</li>
+                <li><b>Grade & Section:</b> ${result.section}</li>
+            </ul>
+
+            <b>Visit Details:</b><br />
+            <ul>
+                <li><b>Date:</b> ${resultVisit.date.toLocaleString("en-us", {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                })}</li>
+                <li><b>Time:</b> ${hour +":"+ resultVisit.time_start.split(':')[1] + " " + am_pm}</li>
+                <li><b>Reason for Visit:</b> ${reqBody.reason}</li>
+                <li><b>Additional Details:</b> ${reqBody.details}</li>
+            </ul>
+
+            <b>Medications Administered: ${reqBody.medications}</b><br />
+            
+            Attending Nurse: ${reqBody.nurse}<br /><br />
+
+            Notes:<br />
+            Please keep this receipt for reference and inform the school clinic
+            of any updates regarding the patient's health status.<br /><br />
+
+            For inquiries, contact the school clinic at
+            medisync.sti.malolos@gmail.com.
+          </p>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
+
+  `;
+
+  const mailOptions = {
+    from: {
+      name: "MediSYNC",
+      address: "medisync.sti.malolos@gmail.com",
+    },
+    to: result.email,
+    subject: `Medisynccc's Birthday Today! ʕ•́ᴥ•̀ʔっ`,
+    html: body,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions); // Directly calling sendMail
+    console.log(body);
+    console.log("Email sent successfully");
+  } catch (error) {
+    console.error("Error sending email:", error);
+  }
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify("Email Sent"),
+  };
 };
 
 module.exports = {

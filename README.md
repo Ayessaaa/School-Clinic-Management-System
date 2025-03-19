@@ -59,8 +59,10 @@ This consists of the student that are currently on the database. Development of 
 ## Fill Out Form
 This isnt included in this repo as of the moment but this page is where the students will fill out their information which is connected to an API Gateway that triggers a Lambda function to pass the data to the database in MongoDB Atlas.
 
+## SMS Message
+This uses GSM-Module to send text messages to students parents about their visit in the clinic.
 
-## Thank you!
-Thanks for checking out my repo :D <br>
-*Updates coming soon*
+## Email Receipts
+Students will also receive an email containing the details of the student visit. This includes the type of visit, time visited, and medication given. 
+
 

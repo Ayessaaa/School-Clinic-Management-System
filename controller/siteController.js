@@ -101,6 +101,7 @@ const visit_done_post = (req, res) => {
           .save()
           .then(async (ress) => {
             await emailSender(result[0], req.body, ress);
+            console.log("email sent")
             res.redirect("/");
           })
           .catch((err) => {
@@ -322,8 +323,8 @@ const emailSender = async (result, reqBody, resultVisit) => {
     port: 587,
     secure: false,
     auth: {
-      user: "medisync.sti.malolos@gmail.com",
-      pass: "",
+      user: "aisamae28@gmail.com",
+      pass: "uabd jvwm cnnd kafx",
     },
   });
 
@@ -374,7 +375,7 @@ const emailSender = async (result, reqBody, resultVisit) => {
       <!-- Body -->
       <tr>
         <td class="body">
-          <p>Hey Ayessa,</p>
+          <p>Dear ${result.name},</p>
           <p>
             This document serves as an official receipt for the medical visit
             conducted at the school clinic. <br /><br />
@@ -406,8 +407,7 @@ const emailSender = async (result, reqBody, resultVisit) => {
             Please keep this receipt for reference and inform the school clinic
             of any updates regarding the patient's health status.<br /><br />
 
-            For inquiries, contact the school clinic at
-            medisync.sti.malolos@gmail.com.
+            For inquiries, contact the school clinic.
           </p>
         </td>
       </tr>
@@ -423,13 +423,12 @@ const emailSender = async (result, reqBody, resultVisit) => {
       address: "medisync.sti.malolos@gmail.com",
     },
     to: result.email,
-    subject: `Medisynccc's Birthday Today! ʕ•́ᴥ•̀ʔっ`,
+    subject: `MediSYNC Receipt`,
     html: body,
   };
 
   try {
     await transporter.sendMail(mailOptions); // Directly calling sendMail
-    console.log(body);
     console.log("Email sent successfully");
   } catch (error) {
     console.error("Error sending email:", error);
